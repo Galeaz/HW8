@@ -1,3 +1,7 @@
+// Participants: Gabriela Lopez
+// Date: 04-15-21
+// Description: Patient header
+
 #pragma once
 
 #include <string>
@@ -16,89 +20,56 @@ private:
 	string careUnit;
 	static string ER_description[5];
 public:
-	Patient()
-	{
-		checkedInTime;
-		priority = 0;
-		name = "unknown";
-		age = 0;
-		gender = 'u';
-	}
+
+	//Precondition: create a patient object
+	//Postcondition: initializes all patient components
+	Patient();
 	
-	void setCheckedInTime(unsigned int t)
-	{
-		this->checkedInTime= t;
-	}
+	//Precondition: int value containing the time patient checked in
+	//Postcondition: sets the time checked in
+	void setCheckedInTime(unsigned int t);
 	
-	unsigned int getCheckedInTime() const
-	{
-		return checkedInTime;
-	}
+	//Precondition: N/A
+	//Postcondition: returns time patient checked in
+	unsigned int getCheckedInTime() const;
 	
-	void setPriority(int priority)
-	{
-		this->priority = priority;
-	}
+	//Precondition: int value containing priority status from 1 to 5 (1 = fine, 5 = really bad)
+	//Postcondition: sets priority
+	void setPriority(int priority);
 	
-	int getPriority() const
-	{
-		return priority;
-	}
+	//Precondition: N/A
+	//Postcondition: returns patient priority
+	int getPriority() const;
 	
-	void setName(string name)
-	{
-		this->name = name;
-	}
+	//Precondition: a string of the name of patient
+	//Postcondition: sets name
+	void setName(string name);
+
+	//Precondition: N/A
+	//Postcondition: returns patient name
+	string getName() const;
 	
-	string getName() const
-	{
-		return name;
-	}
+	//Precondition: an int for age of patient
+	//Postcondition: sets age
+	void setAge(int age);
 	
-	void setAge(int age)
-	{
-		this->age = age;
-	}
+	//Precondition: N/A
+	//Postcondition: returns the age of patient
+	int getAge() const;
 	
-	int getAge() const 
-	{ 
-		return age; 
-	}
+	//Precondition: a char for the patient gender
+	//Postcondition: sets gender
+	void setGender(char gender);
 	
-	void setGender(char gender) 
-	{ 
-		this->gender = gender; 
-	}
+	//Precondition: N/A
+	//Postcondition: returns patient gender
+	char getGender() const;
 	
-	char getGender() const 
-	{ 
-		return gender; 
-	}
-	
+	//Precondition: comparison of patients priority(patient 1 < patient 2)
+	//Postcondition: returns a bool if first patient has less priority than the other
 	friend bool operator <(const Patient& P1, const Patient& P2); //key in priority queue
+
+	//Precondition: patient object to print
+	//Postcondition: prints all patient information
 	friend ostream& operator<<(ostream& outs, const Patient& obj);
 };
-
-bool operator <(const Patient& P1, const Patient& P2)
-{
-	return P1.priority < P2.priority;
-}
-
-string Patient::ER_description[5] = 
-{ 
-	"Stable, with no resources anticipated or prescriptions", 
-	"Stable, with only one type of resource anticipated " ,
-	"Stable, with multiple types of resources needed to investigate or treat", 
-	"High risk of deterioration, or signs of a time-critical problem", 
-	"Immediate, life-saving intervention required without delay" 
-};
-
-ostream& operator <<(ostream& outs, const Patient& obj)
-{
-	outs << "ER level: " << obj.getPriority() << " - " << obj.ER_description[obj.getPriority()-1] << '\n';
-	outs << "\t\t\tChecked-In time: " << obj.getCheckedInTime() << '\n';
-	outs << "\t\t\tPatient's name: " << obj.getName() << '\n';
-	outs << "\t\t\tPatient's age: " << obj.getAge() << '\n';
-	outs << "\t\t\tPatient's gender: " << obj.getGender() << '\n';
-	return outs;
-}

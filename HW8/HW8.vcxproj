@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="patient.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="driver1.h" />

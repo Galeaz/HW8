@@ -11,6 +11,8 @@ using namespace std;
 
 #include "patient.h"
 
+//Precondition: N/A
+//Postcondition: Prints menu and returns user int option selected
 int menu1() 
 { 
 	cout << "\n\t2> Simulation of an emergency room (ER) using priority queue STL";
@@ -24,6 +26,8 @@ int menu1()
 	return option; 
 }
 
+//Precondition: N/A
+//Postcondition: contains driver for emergency room
 void option2()
 {
 	system("cls");
