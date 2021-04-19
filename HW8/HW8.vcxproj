@@ -149,6 +149,7 @@
     <ClInclude Include="driver2.h" />
     <ClInclude Include="driver3.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="Option1.h" />
     <ClInclude Include="patient.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

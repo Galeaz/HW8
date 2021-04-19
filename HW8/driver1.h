@@ -9,9 +9,11 @@
 #include <queue>
 using namespace std;
 
+#include "Option1.h"
+
 //Precondition: N/A
 //Postcondition: Prints menu and returns user int option selected
-int menu1()
+int warMenu()
 {
 	cout << "\n\t1> Simulation of War (card game) using deque STL";
 	cout << "\n\t" << string(100, char(205));
@@ -28,26 +30,25 @@ int menu1()
 //Postcondition: contains driver for 
 void option1()
 {
-	system("cls");
-	do
-	{
-		switch (menu1())
-		{
-		case 1:
-		{
+	deque <int> generalDeck;
+	deque <int> tempDeckForWar;
+	deque <int> player1Deck;
+	deque <int> player2Deck;
 
-		}
-		break;
-		case 2:
-		{
+	generateGeneralDeck(getCardsPerDeck(), generalDeck);
+	shuffleDeck(generalDeck);
 
-		}
-		break;
-		case 3:
-		{
+	cout << "\n\tDeck of General Cards: ";
+	displayDeck(generalDeck);
 
-		}
-		break;
-		}
-	} while (true);
+	dealCards(generalDeck, player1Deck, player2Deck);
+	cout << "\n\n\tPlayer 1: ";
+	displayDeck(player1Deck);
+	cout << "\n\tPlayer 2: ";
+	displayDeck(player2Deck);
+
+	cout << "\n\tGame Starts:";
+	cout << "\n\t\t" << string(70, char(205));
+
+	playWarGame(player1Deck, player2Deck, tempDeckForWar);
 }
