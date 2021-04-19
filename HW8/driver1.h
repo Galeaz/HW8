@@ -4,12 +4,11 @@
 
 #pragma once
 #include <iostream>
+#include "wargame.h"
 #include <time.h>
 #include <vector>
 #include <queue>
 using namespace std;
-
-#include "Option1.h"
 
 //Precondition: N/A
 //Postcondition: Prints menu and returns user int option selected
@@ -35,7 +34,7 @@ void option1()
 	deque <int> player1Deck;
 	deque <int> player2Deck;
 
-	generateGeneralDeck(getCardsPerDeck(), generalDeck);
+	generateGeneralDeck(getCardsPerSuite(), generalDeck);
 	shuffleDeck(generalDeck);
 
 	cout << "\n\tDeck of General Cards: ";

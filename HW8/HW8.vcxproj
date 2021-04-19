@@ -141,9 +141,8 @@
   <ItemGroup>
     <ClCompile Include="checkstand.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Option1.cpp" />
+    <ClCompile Include="wargame.cpp" />
     <ClCompile Include="patient.cpp" />
-    <ClCompile Include="srfgdfg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="checkstand.h" />
@@ -151,7 +150,7 @@
     <ClInclude Include="driver2.h" />
     <ClInclude Include="driver3.h" />
     <ClInclude Include="input.h" />
-    <ClInclude Include="Option1.h" />
+    <ClInclude Include="wargame.h" />
     <ClInclude Include="patient.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

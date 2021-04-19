@@ -1,14 +1,8 @@
 // Participants: Thien Vu
-// Date: 04-15-21
-// Description: 
+// Date: 04-19-21
+// Description: war game implementation
 
-#pragma once
-#include <deque>
-#include <iostream>
-#include <chrono> 
-#include <algorithm>
-#include <random>
-using namespace std;
+#include "wargame.h"
 
 void generateGeneralDeck(int cardsPerSuite, deque <int>& generalDeck)
 {
@@ -45,7 +39,7 @@ void shuffleDeck(deque <int>& deck)
 	shuffle(deck.begin(), deck.end(), default_random_engine(seed));
 }
 
-int getCardsPerDeck()
+int getCardsPerSuite()
 {
 	int cardsPerDeck;
 	do
@@ -73,7 +67,7 @@ int getCardsPerDeck()
 	return cardsPerDeck;
 }
 
-void dealCards(deque <int> &generalDeck, deque <int>& player1Deck, deque <int>& player2Deck)
+void dealCards(deque <int>& generalDeck, deque <int>& player1Deck, deque <int>& player2Deck)
 {
 	while (!generalDeck.empty())
 	{
@@ -155,7 +149,7 @@ void warGame(deque<int>& player1Deck, deque<int>& player2Deck, deque <int>& temp
 			{
 				if (tempDeck.size() > player1Deck.size())
 				{
-					for(int i = 0 ; i < 2; i++)
+					for (int i = 0; i < 2; i++)
 					{
 						tempDeckForWar.push_front(player2Deck.back());
 						player1Deck.push_front(player2Deck.back());
@@ -186,7 +180,7 @@ void warGame(deque<int>& player1Deck, deque<int>& player2Deck, deque <int>& temp
 			}
 		}
 	}
-	
+
 }
 
 void playWarGame(deque<int>& player1Deck, deque<int>& player2Deck, deque <int>& tempDeckForWar)

@@ -24,10 +24,7 @@
     <ClCompile Include="checkstand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="srfgdfg.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Option1.cpp">
+    <ClCompile Include="wargame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,7 +47,7 @@
     <ClInclude Include="checkstand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Option1.h">
+    <ClInclude Include="wargame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
