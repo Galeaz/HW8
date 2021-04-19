@@ -288,28 +288,3 @@ void playWarGame(deque<int>& player1Deck, deque<int>& player2Deck, deque <int>& 
 		cout << "\n\t\t Therefore, Player1 wins the game with " << player1Deck.size() << " cards\n";
 	}
 }
-
-void option1()
-{
-	deque <int> generalDeck;
-	deque <int> tempDeckForWar;
-	deque <int> player1Deck;
-	deque <int> player2Deck;
-
-	generateGeneralDeck(getCardsPerDeck(), generalDeck);
-	shuffleDeck(generalDeck);
-
-	cout << "\n\tDeck of General Cards: ";
-	displayDeck(generalDeck);
-
-	dealCards(generalDeck, player1Deck, player2Deck);
-	cout << "\n\n\tPlayer 1: ";
-	displayDeck(player1Deck);
-	cout << "\n\tPlayer 2: ";
-	displayDeck(player2Deck);
-
-	cout << "\n\tGame Starts:";
-	cout << "\n\t\t" << string(70, char(205));
-
-	playWarGame(player1Deck, player2Deck, tempDeckForWar);
-}

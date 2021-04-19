@@ -142,6 +142,7 @@
     <ClCompile Include="checkstand.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="patient.cpp" />
+    <ClCompile Include="srfgdfg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="checkstand.h" />
