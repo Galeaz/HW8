@@ -12,8 +12,9 @@ using namespace std;
 #include <ctime>
 //Precondition: N/A
 //Postcondition: contains driver for checkstands at CostCo
-bool timer(int timeOperating);
+bool timer(int curtime, int timeOperating);
 int generateCustomers();
+
 void displayLine(vector<checkoutQueue>& vec);
 void option3()
 {
@@ -23,6 +24,7 @@ void option3()
 	system("cls");
 	cout << "\n\t3> Simulation of checkout lines at a CostCo warehouse store\n";
 	int timeOperating = inputInteger("\n\tEnter the time (0..37800 in seconds) of the store will be operated: ", 0, 37800);
+	int curtime = time(0);
 	int numberOfCheckstands = inputInteger("\n\tEnter the number of cash registers (1..10): ", 1, 10);
 	for (int i = 0; i < numberOfCheckstands; i++)
 	{
@@ -44,7 +46,7 @@ void option3()
 				}
 				if (i >= cq.size())
 					i = 1;
-				if (counter == 0)
+				if (counter == 0||!timer(curtime, timeOperating))
 					break;
 				if (cq[i] < cq[i - 1])
 				{
@@ -68,7 +70,7 @@ void option3()
 			}
 		}
 		for (int i = 0; i < cq.size(); i++)
-			if (!cq[i].empty())
+			if (!cq[i].empty()&& !(timer(curtime, timeOperating)))
 			{
 				cq[i].removeCustomer();
 				helped++;
@@ -77,7 +79,7 @@ void option3()
 		displayLine(cq);
 
 
-	} while (timer(timeOperating));
+	} while (timer(curtime,timeOperating));
 
 
 }
@@ -104,9 +106,11 @@ int generateCustomers()
 	}
 	return amountOfCustomers;
 }
-bool timer(int timeOperating)
+bool timer(int curtime,int timeOperating)
 {
-	int stopTime = time(0) +timeOperating;
-	return(time(0) < stopTime);
+	int check,holder;
+	check = curtime + timeOperating;
+	holder = time(0);
+	return(holder<check);
 	
 }
