@@ -24,6 +24,9 @@
     <ClCompile Include="checkstand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="wargame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="input.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="checkstand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="wargame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="checkstand.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="wargame.cpp" />
     <ClCompile Include="patient.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="driver2.h" />
     <ClInclude Include="driver3.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="wargame.h" />
     <ClInclude Include="patient.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
