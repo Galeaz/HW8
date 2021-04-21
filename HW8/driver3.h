@@ -24,7 +24,7 @@ void option3()
 	cout << "\n\t3> Simulation of checkout lines at a CostCo warehouse store\n";
 	int timeOperating = inputInteger("\n\tEnter the time (0..37800 in seconds) of the store will be operated: ", 0, 37800);
 	int numberOfCheckstands = inputInteger("\n\tEnter the number of cash registers (1..10): ", 1, 10);
-	for (int i = 0; i < numberOfCheckstands; i++)
+	for (int i = 1; i <= numberOfCheckstands; i++)
 	{
 		checkoutQueue queue;
 		cq.push_back(queue);
@@ -93,7 +93,7 @@ void displayLine(vector<checkoutQueue> &vec)
 }
 int generateCustomers()
 {
-	int amountOfCustomers =6;
+	int amountOfCustomers = 6;
 	int percentChance = 50; 
 	int random = 0;
 	for (int i = 0; i < 10; i++);
