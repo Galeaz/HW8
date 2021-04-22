@@ -83,7 +83,7 @@ void option3()
 			}
 		system("cls");
 		displayLine(cq);
-	} while (!cq.empty()); //timer(curtime, timeOperating)
+	} while (timer(curtime, timeOperating)); 
 }
 
 //Precondition: a CheckoutQueue
