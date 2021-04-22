@@ -10,12 +10,17 @@ using namespace std;
 #include "checkstand.h"
 #include <random>
 #include <ctime>
+#include <Windows.h>
+
 //Precondition: N/A
 //Postcondition: contains driver for checkstands at CostCo
 bool timer(int curtime, int timeOperating);
 int generateCustomers();
 
 void displayLine(vector<checkoutQueue>& vec);
+
+//Precondition: N/A
+//Postcondition: Simulation of checkout at Costco with Guesses generated randomly
 void option3()
 {
 	vector<checkoutQueue> cq;
@@ -33,6 +38,7 @@ void option3()
 	}
 	do
 	{
+		Sleep(100);
 		int customersPerLoop = generateCustomers();
 		int counter = customersPerLoop;
 		for (int i = 1;  i<customersPerLoop; i++)
@@ -70,20 +76,18 @@ void option3()
 			}
 		}
 		for (int i = 0; i < cq.size(); i++)
-			if (!cq[i].empty()&& !(timer(curtime, timeOperating)))
+			if (!cq[i].empty() && !(timer(curtime, timeOperating)))
 			{
 				cq[i].removeCustomer();
 				helped++;
 			}
 		system("cls");
 		displayLine(cq);
-
-
-	} while (timer(curtime,timeOperating));
-
-
+	} while (!cq.empty()); //timer(curtime, timeOperating)
 }
 
+//Precondition: a CheckoutQueue
+//Postcondition: Create a number of checkout stands based on the user input
 void displayLine(vector<checkoutQueue> &vec)
 {
 	for (int i = 0; i < vec.size(); i++)
@@ -91,8 +95,9 @@ void displayLine(vector<checkoutQueue> &vec)
 		cout << '\n'<<"Register " << i + 1 << '\n';
 		cout << vec[i] << '\n';
 	}
-
 }
+//Precondition: N/A
+//Postcondition: Randomly create customers for the checkstand
 int generateCustomers()
 {
 	int amountOfCustomers = 6;
@@ -106,11 +111,12 @@ int generateCustomers()
 	}
 	return amountOfCustomers;
 }
+//Precondition: 2 integer
+//Postcondition: Assign an operating time for the Checkstand in Costco
 bool timer(int curtime,int timeOperating)
 {
 	int check,holder;
 	check = curtime + timeOperating;
 	holder = time(0);
 	return(holder<check);
-	
 }

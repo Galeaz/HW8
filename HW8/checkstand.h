@@ -12,10 +12,22 @@ private:
 	queue<int> customers;
 	int size;
 public:
+	//Precondition: N/A
+	//Postcondition: default constructor, set size = 0
 	checkoutQueue();
+	//Precondition: N/A
+	//Postcondition: return if size == 0
 	bool empty() const;
+	//Precondition: N/A
+	//Postcondition: create a random number of customer in Costco
 	void addCustomer();
+	//Precondition: N/A
+	//Postcondition: remove a cusomter from Queue
 	void removeCustomer();
+	//Precondition: a checkoutQueue
+	//Postcondition: overload the operator < to use with checkoutQueue
 	bool operator <(const checkoutQueue& RHS);
+	//Precondition: a checkoutQueue, and output ostream
+	//Postcondition: overload the operator << to output checkoutQueue
 	friend ostream& operator <<(ostream& outs,const checkoutQueue& obj);
 };
