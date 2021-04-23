@@ -11,28 +11,16 @@
 using namespace std;
 
 //Precondition: N/A
-//Postcondition: Prints menu and returns user int option selected
-int warMenu()
-{
-	cout << "\n\t1> Simulation of War (card game) using deque STL";
-	cout << "\n\t" << string(100, char(205));
-	cout << "\n\t\t1> ";
-	cout << "\n\t\t2> ";
-	cout << "\n\t\t3> ";
-	cout << "\n\t\t0> return";
-	cout << "\n\t" << string(100, char(205)) << '\n';
-	int option = inputInteger("\n\tOption: ", 0, 3);
-	return option;
-}
-
-//Precondition: N/A
-//Postcondition: contains driver for 
+//Postcondition: contains driver for war game
 void option1()
 {
 	deque <int> generalDeck;
 	deque <int> tempDeckForWar;
 	deque <int> player1Deck;
 	deque <int> player2Deck;
+
+	cout << "\n\t1> Simulation of War (card game) using deque STL";
+	cout << "\n\t" << string(100, char(205));
 
 	generateGeneralDeck(getCardsPerSuite(), generalDeck);
 	shuffleDeck(generalDeck);
