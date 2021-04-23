@@ -3,7 +3,7 @@
 // Description: checkstand implementation
 #include "checkstand.h"
 #include <random>
-
+#include <Windows.h>
 checkoutQueue::checkoutQueue() : size(0) {} 
 bool checkoutQueue::empty() const
 {
@@ -19,6 +19,7 @@ void checkoutQueue::addCustomer()
 
 void checkoutQueue::removeCustomer()
 {
+	
 	customers.pop();
 	size--;
 }

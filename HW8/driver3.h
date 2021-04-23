@@ -14,10 +14,10 @@ using namespace std;
 
 //Precondition: N/A
 //Postcondition: contains driver for checkstands at CostCo
-bool timer(int curtime, int timeOperating);
+bool timer(int endTime);
 int generateCustomers();
 
-void displayLine(vector<checkoutQueue>& vec);
+void displayLine(vector<checkoutQueue>& vec,int helped,int endTime);
 
 //Precondition: N/A
 //Postcondition: Simulation of checkout at Costco with Guesses generated randomly
@@ -30,6 +30,7 @@ void option3()
 	cout << "\n\t3> Simulation of checkout lines at a CostCo warehouse store\n";
 	int timeOperating = inputInteger("\n\tEnter the time (0..37800 in seconds) of the store will be operated: ", 0, 37800);
 	int curtime = time(0);
+	int endTime = curtime + timeOperating;
 	int numberOfCheckstands = inputInteger("\n\tEnter the number of cash registers (1..10): ", 1, 10);
 	for (int i = 1; i <= numberOfCheckstands; i++)
 	{
@@ -52,7 +53,7 @@ void option3()
 				}
 				if (i >= cq.size())
 					i = 1;
-				if (counter == 0||!timer(curtime, timeOperating))
+				if (counter == 0||!timer(endTime))
 					break;
 				if (cq[i] < cq[i - 1])
 				{
@@ -64,32 +65,35 @@ void option3()
 					cq[i - 1].addCustomer();
 					counter--;
 				}
-				system("cls");
-				displayLine(cq);
+
+				
 			}
 			else 
 			{
 				cq[0].addCustomer();
 				system("cls");
-				displayLine(cq);
+				displayLine(cq,helped,endTime);
 				counter--;
 			}
+			
 		}
 		for (int i = 0; i < cq.size(); i++)
-			if (!cq[i].empty() && !(timer(curtime, timeOperating)))
+			if (!cq[i].empty() && (timer(endTime)))
 			{
 				cq[i].removeCustomer();
 				helped++;
+				system("cls");
+				displayLine(cq, helped,endTime);
 			}
-		system("cls");
-		displayLine(cq);
-	} while (timer(curtime, timeOperating)); 
+	} while (timer(endTime)); 
 }
 
 //Precondition: a CheckoutQueue
 //Postcondition: Create a number of checkout stands based on the user input
-void displayLine(vector<checkoutQueue> &vec)
+void displayLine(vector<checkoutQueue> &vec, int helped, int endTime)
 {
+
+	cout <<"Costco Warehouse store open for "<< endTime -time(0)<< " \tNumber of customers served: " << helped<<'\n';
 	for (int i = 0; i < vec.size(); i++)
 	{
 		cout << '\n'<<"Register " << i + 1 << '\n';
@@ -100,7 +104,7 @@ void displayLine(vector<checkoutQueue> &vec)
 //Postcondition: Randomly create customers for the checkstand
 int generateCustomers()
 {
-	int amountOfCustomers = 6;
+	int amountOfCustomers = 4;
 	int percentChance = 50; 
 	int random = 0;
 	for (int i = 0; i < 10; i++);
@@ -113,10 +117,9 @@ int generateCustomers()
 }
 //Precondition: 2 integer
 //Postcondition: Assign an operating time for the Checkstand in Costco
-bool timer(int curtime,int timeOperating)
+bool timer(int endTime)
 {
-	int check,holder;
-	check = curtime + timeOperating;
+	int holder;
 	holder = time(0);
-	return(holder<check);
+	return(holder<endTime);
 }
