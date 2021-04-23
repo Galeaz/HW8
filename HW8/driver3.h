@@ -75,8 +75,10 @@ void option3()
 //Postcondition: Create a number of checkout stands based on the user input
 void displayLine(vector<checkoutQueue> &vec, int helped, int endTime)
 {
-
-	cout <<"Costco Warehouse store open for "<< endTime -time(0)<< " \tNumber of customers served: " << helped<<'\n';
+	int currentTime = endTime - time(0);
+	if (currentTime < 0)
+		currentTime = 0;
+	cout <<"Costco Warehouse store open for "<< currentTime << " \tNumber of customers served: " << helped<<'\n';
 	for (int i = 0; i < vec.size(); i++)
 	{
 		cout << '\n'<<"Register " << i + 1 << '\n';
