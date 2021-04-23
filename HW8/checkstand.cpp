@@ -52,3 +52,7 @@ ostream& operator <<(ostream& outs, const checkoutQueue& obj)
 		return outs;
 	}
 }
+int checkoutQueue::getSize() const
+{
+	return size;
+}

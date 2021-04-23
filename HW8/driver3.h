@@ -1,6 +1,6 @@
-// Participants: Gabriela Lopez
+// Participants: Gabriela Lopez, Andrew Thompson, Duyen Tran,
 // Date: 04-15-21
-// Description: file containing Drivers for option3
+// Description: file containing Drivers for option3. 
 
 #pragma once
 #include <iostream>
@@ -18,9 +18,9 @@ bool timer(int endTime);
 int generateCustomers();
 
 void displayLine(vector<checkoutQueue>& vec,int helped,int endTime);
-
+int returnShortest(vector<checkoutQueue>& vec);
 //Precondition: N/A
-//Postcondition: Simulation of checkout at Costco with Guesses generated randomly
+//Postcondition: Simulation of checkout lines at a Costco rather busy costco
 void option3()
 {
 	vector<checkoutQueue> cq;
@@ -41,39 +41,22 @@ void option3()
 	{
 		Sleep(100);
 		int customersPerLoop = generateCustomers();
-		int counter = customersPerLoop;
 		for (int i = 1;  i<customersPerLoop; i++)
 		{
 			if (numberOfCheckstands > 1)
 			{
-				if (i == cq.size()-1)
-				{
-					cq[i].addCustomer();
-					counter--;
-				}
-				if (i >= cq.size())
-					i = 1;
-				if (counter == 0||!timer(endTime))
+				cq[returnShortest(cq)].addCustomer();
+				system("cls");
+				displayLine(cq, helped, endTime);
+				if (!timer(endTime))
 					break;
-				if (cq[i] < cq[i - 1])
-				{
-					cq[i].addCustomer();
-					counter--;
-				}
-				else 
-				{
-					cq[i - 1].addCustomer();
-					counter--;
-				}
-
-				
+		
 			}
 			else 
 			{
 				cq[0].addCustomer();
 				system("cls");
 				displayLine(cq,helped,endTime);
-				counter--;
 			}
 			
 		}
@@ -101,18 +84,14 @@ void displayLine(vector<checkoutQueue> &vec, int helped, int endTime)
 	}
 }
 //Precondition: N/A
-//Postcondition: Randomly create customers for the checkstand
+//Postcondition: returns a number between 6 and 7 for amount of customers per loop. must be a busy costco
 int generateCustomers()
 {
-	int amountOfCustomers = 4;
+	int amountOfCustomers = 5;
 	int percentChance = 50; 
 	int random = 0;
-	for (int i = 0; i < 10; i++);
-	{
-		random = rand() % 100 + 1;
-		if (random < 50)
-			amountOfCustomers++;
-	}
+
+	amountOfCustomers+= (rand()%2+1);
 	return amountOfCustomers;
 }
 //Precondition: 2 integer
@@ -121,5 +100,17 @@ bool timer(int endTime)
 {
 	int holder;
 	holder = time(0);
-	return(holder<endTime);
+	return(holder < endTime);
+}
+//precondition: a vector of checkoutQueues
+//postcondition: returns the shortest line
+int returnShortest(vector<checkoutQueue>& vec)
+{
+	int shortest = 0;
+	for (int i = 1; i < vec.size(); i++)
+	{
+		if (vec[i] < vec[shortest])
+			shortest = i;
+	}
+	return shortest;
 }

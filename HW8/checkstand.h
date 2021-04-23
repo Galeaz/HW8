@@ -19,7 +19,7 @@ public:
 	//Postcondition: return if size == 0
 	bool empty() const;
 	//Precondition: N/A
-	//Postcondition: create a random number of customer in Costco
+	//Postcondition: adds a customer to the line
 	void addCustomer();
 	//Precondition: N/A
 	//Postcondition: remove a cusomter from Queue
@@ -30,4 +30,8 @@ public:
 	//Precondition: a checkoutQueue, and output ostream
 	//Postcondition: overload the operator << to output checkoutQueue
 	friend ostream& operator <<(ostream& outs,const checkoutQueue& obj);
+	//percondition: a checkoutQueue
+	//postcondition: returns the size of the queue
+	int getSize() const;
+
 };
